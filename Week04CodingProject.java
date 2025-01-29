@@ -2,8 +2,8 @@ package week04;
 
 public class Week04CodingProject {
 
-
-
+	public static void main(String[] args) {
+		
 	//1. Create an array of int called ages that contains the following values: 3, 9, 23, 64, 2, 8, 28, 93.
 		//a. Programmatically subtract the value of the first element in the array from the value in the 
 		//last element of the array (i.e. do not use ages[7] in your code). Print the result to the console.  
@@ -14,8 +14,21 @@ public class Week04CodingProject {
 			//(Programmatically subtract the value of the first element in the new array ages2 from the last element of ages2). 
 			//iii. Show that using the index values for the elements is dynamic (works for arrays of different lengths).
 		//c. Use a loop to iterate through the array and calculate the average age. Print the result to the console.
-
+		
+	int[] ages = {3, 9, 23, 64, 2, 8, 28, 93};	
+	System.out.println("1a): " + (ages[ages.length - 1] - ages[0]));
 	
+	int[] ages2 = {5, 34, 22, 9, 10, 58, 31, 48, 17};
+	//biii: while the first array has 8 elements and the second has 9, the programatic method to access the final element is the same.
+	System.out.println("1bii): " + (ages2[ages2.length - 1] - ages2[0]));
+	
+	//c: had to declare a variable to add the ages to outside of the for loop.
+	int ageSum = 0;
+	for(int i = 0; i < ages.length; i++) {
+		ageSum += ages[i];
+	}
+	//Checking it with my calculator came up with 28.75, which truncates to 28.
+	System.out.println("1c): " + (ageSum / ages.length));
 	
 	//2. Create an array of String called names that contains the following values: “Sam”, “Tommy”, “Tim”, “Sally”, “Buck”, “Bob”.
 		//a. Use a loop to iterate through the array and calculate the average number of letters per name. 
@@ -23,25 +36,57 @@ public class Week04CodingProject {
 		//b. Use a loop to iterate through the array again and concatenate all the names together, 
 		//separated by spaces, and print the result to the console.
 
+	String[] names = {"Sam", "Tommy", "Tim", "Sally", "Buck", "Bob"};
+	//As above, I first declared a variable outside of the for loop.
+	int letterSum = 0;
+	for (int i = 0; i < names.length; i++) {
+		letterSum += names[i].length();
+	}
+	//The truncation here is more noticeable as 23/4 is much closer to 4 than the 3 returned.
+	System.out.println("2a): " + (letterSum / names.length));
+	
+	String allNames = "";
+	//I decided to contain an if statement in the for loop so that the final name wouldn't have an extra space on the end.
+	for (int i = 0; i < names.length; i++) {
+		if (i < (names.length - 1)) {
+			allNames += names[i] + " ";
+		} else {
+			allNames += names[i];
+		}
+	}
+	System.out.println("2b): " + allNames);
 	
 	
 	//3. How do you access the last element of any array?
 
-	
+	System.out.println("3): To access the last element of any array, use array[array.length - 1]; "
+			+ "as the index starts at 0, the final number is one less than the number of elements in the array.");
 	
 	//4. How do you access the first element of any array?
 
-	
-	
+	System.out.println("4): To access the first element of any array, use array[0] as the index always starts at 0.");
+		
 	//5. Create a new array of int called nameLengths. 
 	//Write a loop to iterate over the previously created names array and add the length of each name to the nameLengths array.
 
+	//This array will have the same length as the names array, so that can be used to size it during initialization.
+	int[] nameLengths = new int[names.length];
+	
+	//While coding, I printed each element to the console after adding it to the nameLengths array to check that it was working.
+	for (int i = 0; i < names.length; i++) {
+		nameLengths[i] = names[i].length();
+//		System.out.println(nameLengths[i]);
+	}
 	
 	
 	//6. Write a loop to iterate over the nameLengths array and calculate the sum of all the elements in the array. 
 	//Print the result to the console.
 
-	
+	int nameLengthsSum = 0;
+	for (int i = 0; i < nameLengths.length; i++) {
+		nameLengthsSum += nameLengths[i];
+	}
+	System.out.println("6): " + nameLengthsSum);
 	
 	//7. Write a method that takes a String, word, and an int, n, as arguments 
 	//and returns the word concatenated to itself n number of times. 
@@ -77,4 +122,7 @@ public class Week04CodingProject {
 	
 	
 	
+		
+	}
+
 }
