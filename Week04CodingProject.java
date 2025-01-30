@@ -92,30 +92,37 @@ public class Week04CodingProject {
 	//and returns the word concatenated to itself n number of times. 
 	//(i.e. if I pass in “Hello” and 3, I expect the method to return “HelloHelloHello”).
 
+	System.out.println("7): "+ repeatWord("Hello", 3));
 	
 	
 	//8. Write a method that takes two Strings, firstName and lastName, and returns a full name 
 	//(the full name should be the first and the last name as a String separated by a space).
 
-	
+	System.out.println("8): " + createFullName("Sam", "Vimes"));
 	
 	//9. Write a method that takes an array of int and returns true if the sum of all the ints in the array is greater than 100.
 
-	
+	//I opted to test this method with one of the existing int arrays rather than creating another one.
+	System.out.println("9): " + greaterThan100(ages));
 	
 	//10. Write a method that takes an array of double and returns the average of all the elements in the array.
 
-	
+	//Before using the method, I needed an array of doubles, which I decided to call prices.
+	double[] prices = {10.99, 4.35, 8.89, 7.50, 3.49, 4.23, 1.64, 8.20, 15.55};
+	System.out.println("10): " + findAverage(prices));
 	
 	//11. Write a method that takes two arrays of double and returns true 
 	//if the average of the elements in the first array is greater than the average of the elements in the second array.
 
+	//I had to make a second double array. As its average is smaller, I was able to check both true and false outputs.
+	double[] prices2 = {5.43, 2.89, 1.99, 5.27, 3.40, 6.15, 1.42, 9.38, 4.75, 6.84};
+	System.out.println("11): " + firstAverageGreater(prices, prices2));
 	
 	
 	//12. Write a method called willBuyDrink that takes a boolean isHotOutside, and a double moneyInPocket, 
 	//and returns true if it is hot outside and if moneyInPocket is greater than 10.50.
 
-	
+	System.out.println("12): " + willBuyDrink(false, 12.25));
 	
 	//13. Create a method of your own that solves a problem. In comments, write what the method does and why you created it.
 
@@ -125,4 +132,60 @@ public class Week04CodingProject {
 		
 	}
 
+	
+	//Method 7
+	//I used an outer if statement to check for a positive number first, then performed the concatenation with a for loop.
+	public static String repeatWord(String word, int n) {
+		String result = "";
+		if (n > 0) {
+			for (int i = 1; i <= n; i++) {
+				result += word;
+			}
+			return result;
+		} else {
+			return "Please use a number greater than 0.";
+		}
+	}
+	
+	//Method 8
+	//Without a loop or calculations needed, I didn't require a temporary variable and was able to use a single line for this method.
+	public static String createFullName(String firstName, String lastName) {
+		return firstName + " " + lastName;
+	}
+	
+	//Method 9
+	//I stored the sum in a method level variable and used the comparison for my return line.
+	//I was able to use a for each loop as I didn't need the index value for anything.
+	public static boolean greaterThan100(int[] nums) {
+		int sum = 0;
+		for (int num : nums) {
+			sum += num;
+		}
+		return sum > 100;
+	}
+	
+	//Method 10
+	//I was able to use nums and sum again due to them only existing within their respective methods.
+	public static double findAverage(double[] nums) {
+		double sum = 0;
+		for (double num : nums) {
+			sum += num;
+		}
+		return sum / nums.length;
+	}
+	
+	//Method 11
+	//Rather than rewriting my code for finding the average of a double array, I instead called it twice in this method.
+	public static boolean firstAverageGreater(double[] nums1, double[] nums2) {
+		double firstAverage = findAverage(nums1);
+		double secondAverage = findAverage(nums2);
+		return firstAverage > secondAverage;
+	}
+	
+	//Method 12
+	//Instead of using an if statement, I was able to check for both boolean values in one line.
+	public static boolean willBuyDrink(boolean isHotOutside, double moneyInPocket) {
+		return (isHotOutside && moneyInPocket > 10.50);
+	}
+	
 }
