@@ -42,7 +42,7 @@ public class Week04CodingProject {
 	for (int i = 0; i < names.length; i++) {
 		letterSum += names[i].length();
 	}
-	//The truncation here is more noticeable as 23/4 is much closer to 4 than the 3 returned.
+	//The truncation here is more noticeable as 23/6 is much closer to 4 than the 3 returned.
 	System.out.println("2a): " + (letterSum / names.length));
 	
 	String allNames = "";
