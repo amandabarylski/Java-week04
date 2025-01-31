@@ -126,7 +126,12 @@ public class Week04CodingProject {
 	
 	//13. Create a method of your own that solves a problem. In comments, write what the method does and why you created it.
 
-	
+	//I forgot I had to iterate through to print an array and tried to print the result of my method directly.
+	//Once I realized I decided to print on a single line and separate items with spaces.
+	double[] salePrices = findSalePrices(prices, .15);
+	for (double price : salePrices) {
+		System.out.print(price + " ");
+	}
 	
 	
 		
@@ -186,6 +191,18 @@ public class Week04CodingProject {
 	//Instead of using an if statement, I was able to check for both boolean values in one line.
 	public static boolean willBuyDrink(boolean isHotOutside, double moneyInPocket) {
 		return (isHotOutside && moneyInPocket > 10.50);
+	}
+	
+	//Method 13
+	//As I had used prices for my double arrays, I decided to create a method for a store-wide sale.
+	//This method takes a double array and a double representing the percentage of price taken off each item.
+	//It iterates through the double array and adds the adjusted prices to the new array.
+	public static double[] findSalePrices(double[] prices, double percentOff) {
+		double[] salePrices = new double[prices.length];
+		for (int i = 0; i < prices.length; i++) {
+			salePrices[i] = prices[i] - (prices[i] * percentOff);
+		}
+		return salePrices;
 	}
 	
 }
