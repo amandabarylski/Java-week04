@@ -127,7 +127,7 @@ public class Week04CodingProject {
 	//13. Create a method of your own that solves a problem. In comments, write what the method does and why you created it.
 
 	//I forgot I had to iterate through to print an array and tried to print the result of my method directly.
-	//Once I realized I decided to print on a single line and separate items with spaces.
+	//Once I realized this, I decided to print on a single line and separate items with spaces.
 	double[] salePrices = findSalePrices(prices, .15);
 	for (double price : salePrices) {
 		System.out.print(price + " ");
@@ -197,10 +197,20 @@ public class Week04CodingProject {
 	//As I had used prices for my double arrays, I decided to create a method for a store-wide sale.
 	//This method takes a double array and a double representing the percentage of price taken off each item.
 	//It iterates through the double array and adds the adjusted prices to the new array.
+	//As I wanted to round to two decimal places, I used a second for loop to adjust the new array.
+	//This uses steps I found on a few different sources.
+	//I double checked that it was rounding accurately and not always down or up and found that it was correct.
+	//On further testing I was able to combine the first step with the second, but not the third.
+	//I believe this is because using Math.round in a line defaults the result of that entire calculation to an integer.
 	public static double[] findSalePrices(double[] prices, double percentOff) {
 		double[] salePrices = new double[prices.length];
 		for (int i = 0; i < prices.length; i++) {
 			salePrices[i] = prices[i] - (prices[i] * percentOff);
+		}
+		for (int j = 0; j < salePrices.length; j++) {
+//			salePrices[j] *= 100;
+			salePrices[j] = Math.round(salePrices[j] * 100);
+			salePrices[j] /= 100;
 		}
 		return salePrices;
 	}
